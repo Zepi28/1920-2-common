@@ -24,6 +24,9 @@ task copyRuntimeDependencies(type: Copy) {
     from configurations.runtime
 }
 
+// stage task is used by Heroku
+task stage(dependsOn: ['build', 'copyRuntimeDependencies'])
+
 /******************************************************************************
  * Helper tasks to run postgres via docker
  */
