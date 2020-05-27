@@ -26,6 +26,8 @@ public class ResourceServlet extends HttpServlet {
                 req.getQueryString(),
                 req.getHeader("Accept"));
 
+        log.info("url = {}", ClassLoader.getSystemResource(RESOURCE_PATH));
+
         try (InputStream fis = ClassLoader.getSystemResourceAsStream(RESOURCE_PATH)) {
             if (fis == null) {
                 log.error("Unable to open resource located at {}", RESOURCE_PATH);
@@ -37,7 +39,7 @@ public class ResourceServlet extends HttpServlet {
             byte[] buf = new byte[1024];
             int len;
             OutputStream ros = resp.getOutputStream();
-            while((len = fis.read(buf)) != -1) {
+            while ((len = fis.read(buf)) != -1) {
                 ros.write(buf, 0, len);
             }
             ros.flush();

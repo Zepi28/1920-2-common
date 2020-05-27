@@ -35,9 +35,12 @@ public class TimeServletApp {
         server.start();
 
         log.info("server started listening on port {}", port);
-        server.join();
+        // server.join();
 
         log.info("main is ending");
+        //Thread.sleep(2000);
+        //server.stop();
+        server.join();
     }
 
 }
